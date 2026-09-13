@@ -1,0 +1,19 @@
+.root {
+	border-radius: 0.4rem;
+	border: 1px solid #ddd;
+	min-width: 200px;
+	padding: 2rem;
+}
+
+.title {
+	color: #1f2937;
+	font-size: 1.4rem;
+	font-weight: 600;
+	margin-bottom: 0.8rem;
+}
+
+.calendarName {
+	color: #6b7280;
+	font-size: 1rem;
+	text-transform: capitalize;
+}
