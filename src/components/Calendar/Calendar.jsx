@@ -1,6 +1,7 @@
 import layoutStyles from "#styles/Layout.module.css";
 import { useState } from "react";
 import { EventBlock } from "./EventBlock";
+import { ChangeColor } from "../ColorChanges.jsx";
 
 /** @import { CalendarEvent } from './EventBlock/EventBlock.jsx' */
 
@@ -32,9 +33,13 @@ export function Calendar() {
     }));
     console.log("Hitting color change");
   }
-  // function handleOnPatternChange() {
-  //   console.log("This is pattern change");
-  // }
+  function handleOnPatternChange(event) {
+    setCustomStyles((previous) => ({
+      ...previous,
+      backgroundImage: event.target?.value,
+    }));
+    console.log("This is pattern change");
+  }
 
   /**
    * 1) implement color coding for the different calendars allow users to
@@ -57,30 +62,35 @@ export function Calendar() {
 
       <div>
         <form>
+          <ChangeColor
+            handleOnColorChange={handleOnColorChange}
+            customStyles={customStyles}
+          />
           <fieldset>
             <legend>
-              Selected Color: {customStyles.backgroundColor || "None"}
+              Selected Background Image:{" "}
+              {customStyles.backgroundImage || "None"}
             </legend>
             <div>
               <input
                 onChange={handleOnColorChange}
                 checked={customStyles.backgroundColor === "blue"}
                 type="radio"
-                name="contact"
+                name="pattern"
                 value="blue"
-                id="contactChoice1"
+                id="contactChoice3"
               />
-              <label htmlFor="contactChoice1">Blue</label>
+              <label htmlFor="contactChoice1">Lines</label>
 
               <input
                 onChange={handleOnColorChange}
                 checked={customStyles.backgroundColor === "pink"}
                 type="radio"
-                name="contact"
+                name=""
                 value="pink"
-                id="contactChoice2"
+                id="contactChoice4"
               />
-              <label htmlFor="contactChoice2">Pink</label>
+              <label htmlFor="contactChoice2">Crosses</label>
             </div>
           </fieldset>
         </form>
