@@ -1,4 +1,6 @@
-import styles from './EventBlock.module.css';
+import styles from "./EventBlock.module.css";
+// import { useState } from "react";
+import image from "../../../assets/background-diagonal-line.svg";
 
 /**
  * @typedef {Object} CalendarEvent
@@ -14,11 +16,16 @@ import styles from './EventBlock.module.css';
 /**
  * @param {EventBlockProps} props
  */
-export function EventBlock({ calendarId, title, ...props }) {
-	return (
-		<div {...props} className={styles.root}>
-			<div className={styles.title}>{title}</div>
-			<div className={styles.calendarName}>{calendarId}</div>
-		</div>
-	);
+export function EventBlock({ calendarId, title, style, ...props }) {
+  return (
+    <div
+      {...props}
+      // This where we will style it. we will build and object that does it
+      style={style}
+      className={`${styles.root}`}
+    >
+      <div className={styles.title}>{title}</div>
+      <div className={styles.calendarName}>{calendarId}</div>
+    </div>
+  );
 }
