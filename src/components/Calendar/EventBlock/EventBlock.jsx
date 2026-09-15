@@ -1,5 +1,6 @@
 import styles from "./EventBlock.module.css";
 // import { useState } from "react";
+import image from "../../../assets/background-diagonal-line.svg";
 
 /**
  * @typedef {Object} CalendarEvent

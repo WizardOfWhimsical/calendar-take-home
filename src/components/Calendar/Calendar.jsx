@@ -2,6 +2,8 @@ import layoutStyles from "#styles/Layout.module.css";
 import { useState } from "react";
 import { EventBlock } from "./EventBlock";
 import { ChangeColor } from "../ColorChanges.jsx";
+// import DiagonalLines from "../../assets/background-diagonal-line.svg";
+// import Crosses from "../../assets/background-plus.svg";
 
 /** @import { CalendarEvent } from './EventBlock/EventBlock.jsx' */
 
@@ -27,19 +29,22 @@ export function Calendar() {
     },
   ];
   function handleOnColorChange(event) {
-    setCustomStyles((previous) => ({
-      ...previous,
+    setCustomStyles({
+      backgroundImage: event.target.dataset?.img,
       backgroundColor: event.target?.value,
-    }));
+    });
     console.log("Hitting color change");
   }
-  function handleOnPatternChange(event) {
-    setCustomStyles((previous) => ({
-      ...previous,
-      backgroundImage: event.target?.value,
-    }));
-    console.log("This is pattern change");
-  }
+
+  // function handleOnPatternChange(event) {
+  //   setCustomStyles((previous) => ({
+  //     ...previous,
+  //     backgroundImage: event.target.value,
+  //     // backgroundImage: "unset",
+  //     // display: "none",
+  //   }));
+  //   console.log("This is pattern change");
+  // }
 
   /**
    * 1) implement color coding for the different calendars allow users to
@@ -66,33 +71,34 @@ export function Calendar() {
             handleOnColorChange={handleOnColorChange}
             customStyles={customStyles}
           />
-          <fieldset>
+          {/* <fieldset>
             <legend>
-              Selected Background Image:{" "}
-              {customStyles.backgroundImage || "None"}
+              Selected Background Image:
             </legend>
             <div>
               <input
-                onChange={handleOnColorChange}
-                checked={customStyles.backgroundColor === "blue"}
+                onChange={handleOnPatternChange}
+                checked={
+                  customStyles.backgroundImage === "var(--diagonal-background)"
+                }
                 type="radio"
                 name="pattern"
-                value="blue"
+                value="var(--diagonal-background)"
                 id="contactChoice3"
               />
-              <label htmlFor="contactChoice1">Lines</label>
+              <label htmlFor="contactChoice3">Lines</label>
 
               <input
-                onChange={handleOnColorChange}
-                checked={customStyles.backgroundColor === "pink"}
+                onChange={handleOnPatternChange}
+                checked={customStyles.backgroundImage === `url("${Crosses}")`}
                 type="radio"
-                name=""
-                value="pink"
+                name="pattern"
+                value={`url("${Crosses}")`}
                 id="contactChoice4"
               />
-              <label htmlFor="contactChoice2">Crosses</label>
+              <label htmlFor="contactChoice4">Crosses</label>
             </div>
-          </fieldset>
+          </fieldset> */}
         </form>
       </div>
     </div>
